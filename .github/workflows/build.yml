@@ -1,4 +1,4 @@
-name: Build macOS App
+name: Build macOS App for onewebssmac
 
 on:
   push:
@@ -38,5 +38,5 @@ jobs:
       - name: Upload .app as artifact
         uses: actions/upload-artifact@v4
         with:
-          name: Nimo-macOS-App
+          name: onewebssmac-App
           path: Nimo-macOS.zip
