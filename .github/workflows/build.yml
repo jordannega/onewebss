@@ -1,0 +1,42 @@
+name: Build macOS App
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build-macos:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Build macOS .app with PyInstaller
+        run: |
+          pyinstaller --windowed --icon=n.icns --name="Nimo" onewebssmac.py
+
+      - name: Fix app permissions
+        run: |
+          chmod -R +x dist/Nimo.app/
+
+      - name: Zip the .app for distribution
+        run: |
+          cd dist
+          zip -r ../Nimo-macOS.zip Nimo.app
+
+      - name: Upload .app as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Nimo-macOS-App
+          path: Nimo-macOS.zip
