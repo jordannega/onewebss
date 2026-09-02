@@ -1,0 +1,7 @@
+pyinstaller
+pyautogui
+opencv-python
+requests
+cryptography
+Pillow
+numpy
