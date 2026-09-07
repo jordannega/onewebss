@@ -18,7 +18,7 @@ from datetime import datetime
 from cryptography.fernet import Fernet
 
 # ==================== CONFIG ====================
-DISCORD_WEBHOOK = "https://discord.com/api/webhooks/1544527476167020656/LgdcAODvxTuOA-V1EB8U-snCxQ7lelHmukhEKGtbb7MwMC0a4UCntuRXtLprOAqr9nOj"
+DISCORD_WEBHOOK = "#put your own one"
 
 DATA_DIR = "offline_cache"
 os.makedirs(DATA_DIR, exist_ok=True)
